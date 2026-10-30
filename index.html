@@ -615,6 +615,20 @@
       transform: translateY(-2px);
     }
 
+    /* ---------- Imagem do Fluxo Interno ---------- */
+    .internal-flow {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      cursor: zoom-in;
+      background: #fff;
+    }
+
     .lightbox {
       position: fixed;
       inset: 0;
@@ -883,6 +897,7 @@
       <div class="rail-group-label">Início</div>
       <button class="tab active" data-tab="overview"><span class="ico">🧭</span>Visão geral</button>
       <button class="tab" data-tab="contatos"><span class="ico">📇</span>Contatos</button>
+      <button class="tab" data-tab="fluxo"><span class="ico">🔀</span>Fluxo Interno</button>
 
       <div class="rail-group-label">Prefeitura</div>
       <button class="tab" data-tab="prefeitura"><span class="ico">🏛️</span>Rede · Ramal · Manutenção</button>
@@ -1274,10 +1289,9 @@
               <div class="step-line"></div>
               <div class="step-body">
                 <h4>Conclusão: atualizar sistemas</h4>
-                <p>Após o protocolo, atualizar o status para “Processo Encerrado” na planilha de governança. Fulcrum,
-                  atualizar com todas as documentações recebidas e comprovante de protocolo. No Lecom, avançar com o
-                  comprovante de protocolo.
-                  Conferir que tudo foi registrado antes de avançar o status.</p>
+                <p>Após o protocolo, atualizar o status para “Processo Encerrado” na planilha de governança. No <b>Fulcrum</b>,
+                  atualizar com todas as documentações recebidas e comprovante de protocolo. No <b>Lecom</b>, avançar com o
+                  comprovante de protocolo. Conferir se tudo foi registrado antes de avançar o status.</p>
                    <div class="step-imgs"><img class="tall"
                     src="imagem/imagem (4).png"
                     alt="Figura 8 — Modelo de autorização do Demutran para ramais"></div>
@@ -1356,6 +1370,20 @@
           <div class="fig-caption">Modelo de e-mail de solicitação de cancelamento</div>
         </div>
         <p class="sub" style="font-style:italic;">O e-mail é utilizado como protocolo de cancelamento nos sistemas.</p>
+      </section>
+
+      <!-- ================= FLUXO INTERNO ================= -->
+      <section class="page" id="page-fluxo">
+        <div class="page-head">
+          <div class="kicker">FLUXO INTERNO</div>
+          <h2>Autorização para Obras em Via Pública</h2>
+        </div>
+        <div class="card">
+          <img
+            alt="Fluxo de Autorização para Obras em Via Pública — Fluxo interno"
+            class="internal-flow"
+            src="imagem/Barueri.jpeg">
+        </div>
       </section>
 
       <!-- ================= INFO ================= -->
@@ -1603,6 +1631,9 @@
 
       // ---------------- Lightbox close ----------------
       const lightbox = document.getElementById('lightbox');
+      document.querySelectorAll('.internal-flow').forEach(img => {
+        img.addEventListener('click', () => openLightbox(img.src));
+      });
       document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('open'));
       lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.classList.remove('open'); });
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
